@@ -1,3 +1,5 @@
+
+from bipedalwalker import *
 agent.actor_local.load_state_dict(torch.load('checkpoint_actor.pth'))
 agent.critic_local.load_state_dict(torch.load('checkpoint_critic.pth'))
 
