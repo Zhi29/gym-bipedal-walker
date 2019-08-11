@@ -1,5 +1,4 @@
-
-from ddpg_agent import Agent
+from bipedalwalker import agent, env, torch
 agent.actor_local.load_state_dict(torch.load('checkpoint_actor.pth'))
 agent.critic_local.load_state_dict(torch.load('checkpoint_critic.pth'))
 
