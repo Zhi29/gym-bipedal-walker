@@ -25,7 +25,7 @@ class Actor(nn.Module):
         super(Actor, self).__init__()
         self.seed = torch.manual_seed(seed)
         self.fc1 = nn.Linear(state_size, fc_units)
-        self.tanh = nn.tanh()
+        self.tanh = torch.tanh()
         self.fc2 = nn.Linear(fc_units, action_size)
         self.reset_parameters()
 
