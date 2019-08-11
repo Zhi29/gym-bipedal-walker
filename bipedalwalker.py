@@ -11,7 +11,7 @@ env = gym.make('BipedalWalker-v2')
 env.seed(10)
 agent = Agent(state_size=env.observation_space.shape[0], action_size=env.action_space.shape[0], random_seed=10)
 
-def ddpg(n_episodes=2000, max_t=700):
+def ddpg(n_episodes=20000, max_t=700):
     scores_deque = deque(maxlen=100)
     scores = []
     max_score = -np.Inf
