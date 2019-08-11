@@ -25,7 +25,7 @@ class Actor(nn.Module):
         super(Actor, self).__init__()
         self.seed = torch.manual_seed(seed)
         self.fc1 = nn.Linear(state_size, fc_units)
-        self.tanh = torch.tanh()
+        #self.tanh = torch.tanh()
         self.fc2 = nn.Linear(fc_units, action_size)
         self.reset_parameters()
 
@@ -36,7 +36,7 @@ class Actor(nn.Module):
     def forward(self, state):
         """Build an actor (policy) network that maps states -> actions."""
         x = F.relu(self.fc1(state))
-        return self.tanh(self.fc2(x))
+        return torch.tanh(self.fc2(x))
 
 
 class Critic(nn.Module):
