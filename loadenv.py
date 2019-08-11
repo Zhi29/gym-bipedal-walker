@@ -1,4 +1,10 @@
-from bipedalwalker import agent, env, torch
+from ddpg_agent import Agent
+import gym, torch
+
+env = gym.make('BipedalWalker-v2')
+env.seed(10)
+agent = Agent(state_size=env.observation_space.shape[0], action_size=env.action_space.shape[0], random_seed=10)
+
 agent.actor_local.load_state_dict(torch.load('checkpoint_actor.pth'))
 agent.critic_local.load_state_dict(torch.load('checkpoint_critic.pth'))
 
