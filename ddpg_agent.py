@@ -33,7 +33,7 @@ class Agent():
         """
         self.state_size = state_size
         self.action_size = action_size
-        #self.seed = random.seed(random_seed)
+        self.seed = random.seed(random_seed)
 
         # Actor Network (w/ Target Network)
         self.actor_local = Actor(state_size, action_size, random_seed).to(device)
@@ -163,7 +163,7 @@ class ReplayBuffer:
         self.memory = deque(maxlen=buffer_size)  # internal memory (deque)
         self.batch_size = batch_size
         self.experience = namedtuple("Experience", field_names=["state", "action", "reward", "next_state", "done"])
-        #self.seed = random.seed(seed)
+        self.seed = random.seed(seed)
     
     def add(self, state, action, reward, next_state, done):
         """Add a new experience to memory."""
