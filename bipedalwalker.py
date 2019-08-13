@@ -20,7 +20,7 @@ def ddpg(n_episodes=2000, max_t=500):
         agent.reset()
         score = 0
         for t in range(max_t):
-            action = agent.act(state, False)
+            action = agent.act(state)
             next_state, reward, done, _ = env.step(action)
             agent.step(state, action, reward, next_state, done)
             state = next_state
