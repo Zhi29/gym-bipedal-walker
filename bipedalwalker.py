@@ -33,7 +33,22 @@ def ddpg(n_episodes=2000, max_t=700):
         if i_episode % 100 == 0:
             torch.save(agent.actor_local.state_dict(), 'checkpoint_actor.pth')
             torch.save(agent.critic_local.state_dict(), 'checkpoint_critic.pth')
-            print('\rEpisode {}\tAverage Score: {:.2f}'.format(i_episode, np.mean(scores_deque)))   
+            print('\rEpisode {}\tAverage Score: {:.2f}'.format(i_episode, np.mean(scores_deque)))  
+            
+            agent.actor_local.load_state_dict(torch.load('checkpoint_actor.pth'))
+            agent.critic_local.load_state_dict(torch.load('checkpoint_critic.pth'))
+
+            state = env.reset()
+            agent.reset()   
+            while True:
+                action = agent.act(state)
+                env.render()
+                next_state, reward, done, _ = env.step(action)
+                state = next_state
+                if done:
+                    break
+                    
+            env.close() 
     return scores
 
 scores = ddpg()
