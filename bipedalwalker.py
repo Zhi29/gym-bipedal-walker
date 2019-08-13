@@ -9,8 +9,8 @@ from ddpg_agent import Agent
 import time
 
 env = gym.make('BipedalWalker-v2')
-env.seed(10)
-agent = Agent(state_size=env.observation_space.shape[0], action_size=env.action_space.shape[0], random_seed=time.time())
+env.seed(15)
+agent = Agent(state_size=env.observation_space.shape[0], action_size=env.action_space.shape[0], random_seed=15)
 
 def ddpg(n_episodes=2000, max_t=500):
     scores_deque = deque(maxlen=100)
