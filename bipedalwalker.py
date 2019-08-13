@@ -41,7 +41,7 @@ def ddpg(n_episodes=2000, max_t=500):
 
             state = env.reset()
             agent.reset()   
-            while True:
+            for _ in range(max_t):
                 action = agent.act(state)
                 env.render()
                 next_state, reward, done, _ = env.step(action)
